@@ -270,68 +270,33 @@ suse()
 }
 
 ##menu
-tput clear
-tput cup 1 9
-
 tput setaf 3
-echo "Instalacja e-deklaracji i e-pitów"
-
-tput cup 2 8
-echo "Na systemy Debian, Ubuntu, Linuxmint"
-
-tput cup 3 7
-echo "I wszystkie pozostałe pochodne Debiana"
+echo
+echo "      Instalacja e-deklaracji i e-pitów       "
+echo "     Na systemy Debian, Ubuntu, Linuxmint     "
+echo "    I wszystkie pozostałe pochodne Debiana    "
+echo
 tput sgr0
-
-tput setaf 1
-tput cup 5 14
-
-tput rev
-echo "WYBIERZ CO INSTALUJESZ"
+echo " 1. Zainstaluj e-deklaracje"
+echo " 2. Zainstaluj e-pity"
+echo " 3. Obydwa programy"
+tput dim
+echo " 4. Fedora e-deklaracje"
+echo " 5. Suse e-pity"
 tput sgr0
-
-tput setaf 5
-tput cup 7 12
-echo "1. Zainstaluj e-deklaracje"
-
-tput cup 8 12
-echo "2. Zainstaluj e-pity"
-
-tput cup 9 12
-echo "3. Obydwa programy"
-
-tput setaf 3
-tput cup 11 7
-echo "Instalacja aplikacji dla Fedory i Suse"
+echo " 0. Jednak nie instaluje nic"
 tput sgr0
-
-tput setaf 5
-tput cup 13 12
-echo "4. Fedora e-deklaracje"
-
-tput cup 14 12
-echo "5. Suse e-pity"
-
-tput setaf 1
-tput cup 16 12
-echo "6. Jednak nie instaluje nic"
-
-tput setaf 2
-tput bold
-tput cup 18 5
+echo
 read -p "Wpisz numer instalacji i naciśnij enter [1-6] " wybor
-
-tput clear
 tput sgr0
-tput rc
 
 case "$wybor" in
+	0) echo "Anulacja" ;;
 	1) echo "instaluje e-deklaracje" ; (deb_d) ;;
 	2) echo "instaluje e-pity" ; (deb_p) ;;
 	3) echo "instaluje e-deklaracje i e-pity" ; (deb_o) ;;
 	4) echo "Fedora e-deklaracje" ; (fedora) ;;
 	5) echo "Suse e-pity" ; (suse) ;;
-	6) echo "Jednak nie instaluje" ;;
 	*) tput setaf 1; tput bold; tput cup 7 12; echo "źle wybrałeś, uruchom od nowa" ; tput sgr0 ; tput rc ;;
 esac
 
